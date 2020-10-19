@@ -1,0 +1,63 @@
+.carousel-indicators img, .carousel img{
+    cursor: pointer;
+}
+
+.carousel-indicator-item{
+    padding: 5%;
+}
+
+.carousel-indicators .active{
+    background: transparent;
+}
+
+.carousel-indicators .active img{
+    border: 3px solid black;
+}
+
+.modal-gallery .carousel-indicators .active img{
+    border-color: white;
+}
+
+.carousel-control-next, .carousel-control-prev{
+    z-index: 100;
+}
+
+.zoomContainer{
+    z-index: 90;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon{
+    width: 15%;
+    height: 15%;
+}
+
+.bg-dark .slick-next:before, .bg-dark .slick-prev:before{
+    color: #fff;
+}
+
+.bckg-light .slick-next:before, .bckg-light .slick-prev:before{
+    color: #000;
+}
+
+.modal-gallery{
+    background-color: #000;
+}
+
+.modal-gallery .modal-content{
+    background: transparent;
+    border: none;
+}
+
+.modal-gallery .modal-header{
+    border: none;
+}
+
+.modal-gallery .modal-dialog {
+    min-width: 100%;
+}
+
+.modal-gallery .close{
+    position: absolute;
+    right: 20px;
+}
+

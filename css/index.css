@@ -1,0 +1,26 @@
+.carousel-item img {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    height: auto;
+    min-width: 100%;
+}
+
+.carousel, .carousel-item {
+    height: 30rem;
+}
+
+@media (min-height: 1400px) {
+    .carousel, .carousel-item {
+        height: 54rem;
+    }
+}
+
+
+@media (min-height: 1900px) {
+    .carousel, .carousel-item {
+        height: 96rem;
+    }
+}   
