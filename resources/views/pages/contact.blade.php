@@ -5,12 +5,11 @@
 @stop
 
 @section('script')
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key="></script>
     <script src="{{ url('/') }}/js/contact.js"></script>
 @stop
 
 @section('content')
-    <h2>Nous contacter</h2>
-    
     <section class="text-center">
         <address>
             <p class="font-weight-bold">MAC - M. Gunduz ONSAY</p>
@@ -33,4 +32,14 @@
             </div>
         </div>
     </section>
+@stop
+
+@section('schemaorg')
+                ,{
+                    "@context": "https://schema.org",
+                    "@type": "ContactPoint",
+                    "name": "{{ $meta->getAppName() }} - Contact",
+                    "email": "{{ $meta->getEmail() }}",
+                    "telephone": "+33329347280"
+                }
 @stop

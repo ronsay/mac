@@ -5,8 +5,8 @@ function manageNavbar(){
     if ($(window).width() < smWith && (prevWinWidth >= smWith || prevWinWidth == -1)) {
         $('.navbar .dropdown-menu a').unbind();
         $('.navbar .dropdown-menu a').click(function(e){
-            e.preventDefault();
             if($(this).next('.submenu').length){
+                e.preventDefault();
                 if ($(this).next('.submenu').is(':visible')) {
                     $(this).next('.submenu').hide();
                 } else {
@@ -20,7 +20,6 @@ function manageNavbar(){
     }else if ($(window).width() >= smWith && (prevWinWidth < smWith && prevWinWidth != -1)){
         $('.navbar .dropdown-menu a').unbind();
         $('.navbar .dropdown-menu a').hover(function(e){
-            console.log('eee');
             e.preventDefault();
             if($(this).next('.submenu').length){
                 $(this).next('.submenu').show();

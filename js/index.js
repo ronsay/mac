@@ -1,11 +1,11 @@
-function resizeMain(){
-    $('main').css('min-height', $('#home-carousel .carousel-item').first().height()+'px');
-}
-
 $(document).ready(function(){
-    resizeMain();
-
-    $(window).on('resize', function (){
-        resizeMain();
+    $(function() {
+        return $(".carousel").on("slide.bs.carousel", function(ev) {
+            if($(ev.relatedTarget).children("img").length){
+                var lazy = $(ev.relatedTarget).find("img[data-src]");
+                lazy.attr("src", lazy.data('src'));
+                lazy.removeAttr("data-src");
+            }
+        });
     });
 });

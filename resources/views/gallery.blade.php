@@ -1,13 +1,21 @@
 @if(isset($gallery))
-<div id="{{ $gallery['id'] ?? 'default' }}" class="container-fluid carousel-gallery @if(isset($gallery['background']) && $gallery['background'] == 'dark') bg-dark @endif" nb-thumb="{{ $gallery['nbthumb'] ?? 4 }}" zoom="{{ $gallery['zoom'] ?? 'false' }}">
+<div id="{{ $gallery['id'] ?? 'default' }}" class="container-fluid carousel-gallery mb-3 @if(isset($gallery['background']) && $gallery['background'] == 'dark') bg-dark @endif" nb-thumb="{{ $gallery['nbthumb'] ?? 4 }}" zoom="{{ $gallery['zoom'] ?? 'false' }}">
     <div class="main-gallery-container gallery-container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 offset-lg-1 col-lg-10">
                 <div id="{{ $gallery['id'] ?? 'default' }}-gallery-carousel" class="carousel slide gallery-carousel" data-ride="carousel" data-interval="false" data-wrap="false">
                     <div class="carousel-inner">
                         @foreach($gallery['list'] as $ind => $item)
                         <div class="carousel-item @if($ind == 0) active @endif">
-                            <img class="d-block w-100" src="{{url('/')}}/img/gallery/fit/{{ $item['image'] }}" alt="{{ $item['title'] ?? $gallery['title'] }}" @if(isset($gallery['modal']) && $gallery['modal']) data-toggle="modal" data-target="#{{ $gallery['id'] ?? 'default' }}-modal-gallery" @endif>
+                            <img class="d-block w-100" @if($ind == 0) src= @else src="" data-src= @endif"{{ url('/img/gallery/'.$gallery['url'].'/fit/'.$item['image']) }}" alt="{{ $item['title'] ?? $gallery['title'] }}" @if(isset($gallery['modal']) && $gallery['modal']) data-toggle="modal" data-target="#{{ $gallery['id'] ?? 'default' }}-modal-gallery" @endif>
+                            <div class="carousel-caption d-none d-md-block p-0">
+                            @if(isset($item['title']))
+                                <h2>{{ $item['title'] }}</h2>
+                            @endif
+                            @if(isset($item['localization']))
+                                <h3>{{ $item['localization'] }}</h3>
+                            @endif
+                            </div>
                         </div>
                         @endforeach
                     </div>
@@ -24,10 +32,10 @@
         </div>
         <div class="row mt-3">
             <div class="col-12">
-                <div class="carousel-indicators slider @if(!isset($gallery['background']) || $gallery['background'] == 'light') bckg-light @endif">
+                <div class="carousel-indicators position-relative slider @if(!isset($gallery['background']) || $gallery['background'] == 'light') bckg-light @endif">
                     @foreach($gallery['list'] as $ind => $item)
                     <div data-slide-to="{{ $ind }}" data-target="#{{ $gallery['id'] ?? 'default' }}-gallery-carousel" class="carousel-indicator-item @if($ind == 0) active @endif">
-                        <img src="{{url('/')}}/img/gallery/thumbnail/{{ $item['image'] }}" alt="{{ $item['title'] ?? $gallery['title'] }}" class="w-100">
+                        <img @if(isset($gallery['nbthumb']) && $ind < $gallery['nbthumb']) src= @else src="" data-src= @endif"{{ url('/img/gallery/'.$gallery['url'].'/thumbnail/'.$item['image']) }}" alt="{{ $item['title'] ?? $gallery['title'] }}" class="w-100">
                     </div>
                     @endforeach
                 </div>
@@ -39,23 +47,25 @@
         <div class="modal-dialog m-1" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title w-100 text-center">{{ $gallery['title'] ?? '' }}</h3>
+                    <h2 class="modal-title w-100 text-center">{{ $gallery['title'] ?? '' }}</h2>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="text-light">&times;</span></button>
                 </div>
                 <div class="modal-body modal-gallery-container gallery-container p-1">
                     <div class="row">
-                        <div class="col-12 offset-sm-1 col-sm-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+                        <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8">
                             <div id="{{ $gallery['id'] ?? 'default' }}-modal-gallery-carousel" class="carousel slide modal-gallery-carousel" data-ride="carousel" data-interval="false" data-wrap="false">
                                 <div class="carousel-inner">
                                 @foreach($gallery['list'] as $ind => $item)
                                   <div class="carousel-item @if($ind == 0) active @endif">
-                                    <img class="d-block w-100" src="{{url('/')}}/img/gallery/{{ $item['image'] }}" alt="{{ $item['title'] ?? $gallery['title'] }}">
-                                    @if(isset($item['title']) && $item['title'] != '')
-                                    <h4 class="text-center">{{ $item['title'] }}</h4>
+                                    <img class="d-block w-100" src="" data-src="{{ url('/img/gallery/'.$gallery['url'].'/'.$item['image']) }}" alt="{{ $item['title'] ?? $gallery['title'] }}">
+                                    <div class="carousel-caption d-none d-md-block p-0">
+                                    @if(isset($item['title']))
+                                        <h3>{{ $item['title'] }}</h3>
                                     @endif
-                                    @if(isset($item['desc']) && $item['desc'] != '')
-                                    <p class="text-center m-0">{{ $item['desc'] }}</p>
+                                    @if(isset($item['localization']))
+                                        <h4>{{ $item['localization'] }}</h4>
                                     @endif
+                                    </div>
                                   </div>
                                 @endforeach
                                 </div>
@@ -71,11 +81,11 @@
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-12 offset-sm-1 col-sm-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+                        <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8">
                             <div class="carousel-indicators slider">
                                 @foreach($gallery['list'] as $ind => $item)
                                 <div data-slide-to="{{ $ind }}" data-target="#{{ $gallery['id'] ?? 'default' }}-modal-gallery-carousel" class="carousel-indicator-item @if($ind == 0) active @endif">
-                                  <img src="{{url('/')}}/img/gallery/thumbnail/{{ $item['image'] }}" alt="{{ $item['title'] ?? $gallery['title'] }}" class="w-100">
+                                  <img src="" data-src="{{ url('/img/gallery/'.$gallery['url'].'/thumbnail/'.$item['image']) }}" alt="{{ $item['title'] ?? $gallery['title'] }}" class="w-100">
                                 </div>
                                 @endforeach
                             </div>

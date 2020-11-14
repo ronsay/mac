@@ -2,58 +2,127 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meta;
+use App\Models\Database\Gallery;
+use App\Models\Database\GalleryPhoto;
+
 class PageController extends Controller{
     public function getIndex(){
-        /*$meta = new Meta(
-            'À propos', 
-            'matchmycar est un nouvel acteur du véhicule d\'occasion qui propose aux particuliers des services et des voitures de qualité, au meilleur prix.', 
+        $carousel = array(
+            array(
+                'image' => 'img/index/1.jpg',
+                'title' => 'Bienvenue sur notre site'
+            ),
+            array(
+                'image' => 'img/index/2.jpg',
+                'title' => 'Maquettiste à épinal dans le Grand Est'
+            ),
+            array(
+                'image' => 'img/index/3.jpg',
+                'title' => 'En savoir plus',
+                'page' => 'a-propos'
+            ),
+            array(
+                'image' => 'img/index/4.jpg',
+                'title' => 'Nous contacter',
+                'page' => 'contact'
+            )
+        );
+        
+        $galList = array();
+        $galleries = Gallery::all();
+        
+        foreach ($galleries as $gallery) {
+            $galleryPhoto = GalleryPhoto::where('gallery',$gallery->id)
+                    ->where('orderimg',1)
+                    ->first();
+            
+            if(isset($galleryPhoto)){
+                array_push($galList, array(
+                    'title' => $gallery->title,
+                    'url' => $gallery->url,
+                    'image' => $galleryPhoto->image
+                ));
+            }
+        }
+        
+        $meta = new Meta(
+            'Bienvenue', 
+            'MAC (Maquette d\'Architecture Créations), entreprise spécialisée dans la réalisation de maquette d\'architecture et urbanisme.', 
             true, 
-            ['ingénieur', 'ESTACA', 'marketing', 'HEC', 'Paris', 'constructeur', 'fournisseur'], 
-            'a-propos', 
-            array(), 
-            'summary_large_image', 
-            'article'
-        );*/
+            ['accueil'], 
+            null, 
+            $carousel,
+            'website'
+        );
 
         return view('pages/index')
             ->with('noContainer', true)
-            ->with('title', 'À propos')
-            ->with('meta', null);
+            ->with('title', 'Bienvenue sur le site de MAC Onsay')
+            ->with('carousel',$carousel)
+            ->with('galleries',$galList)
+            ->with('meta', $meta);
     }
     
     public function getAPropos(){
-        /*$meta = new Meta(
+        $meta = new Meta(
             'À propos', 
-            'matchmycar est un nouvel acteur du véhicule d\'occasion qui propose aux particuliers des services et des voitures de qualité, au meilleur prix.', 
+            'Créée en 1982 par M. Gunduz ONSAY, MAC (Maquette Architecture - Créations) est une entreprise individuelle spécialisée dans l\'étude et la réalisation de maquettes d\'architecture et d\'urbanisme.', 
             true, 
-            ['ingénieur', 'ESTACA', 'marketing', 'HEC', 'Paris', 'constructeur', 'fournisseur'], 
+            ['a propos','promoteurs', 'immobilier', 'architecte', 'bureau d\'etude'], 
             'a-propos', 
-            array(), 
-            'summary_large_image', 
+            array(),
             'article'
-        );*/
+        );
 
         return view('pages/apropos')
             ->with('noContainer', false)
             ->with('title', 'À propos')
-            ->with('meta', null);
+            ->with('meta', $meta);
     }
     
     public function getContact(){
-        /*$meta = new Meta(
-            'À propos', 
-            'matchmycar est un nouvel acteur du véhicule d\'occasion qui propose aux particuliers des services et des voitures de qualité, au meilleur prix.', 
+        $meta = new Meta(
+            'Nous contacter', 
+            'Une demande ? Une question ? Contactez nous par mail ou par téléphone, ou venez nous rendre visite !', 
             true, 
-            ['ingénieur', 'ESTACA', 'marketing', 'HEC', 'Paris', 'constructeur', 'fournisseur'], 
-            'a-propos', 
-            array(), 
-            'summary_large_image', 
+            ['contact', 'mail', 'telephone', 'adresse', 'carte'], 
+            'contact', 
+            array(),
             'article'
-        );*/
+        );
 
         return view('pages/contact')
             ->with('noContainer', false)
-            ->with('title', 'À propos')
-            ->with('meta', null);
+            ->with('title', 'Nous contacter')
+            ->with('meta', $meta);
+    }
+    
+    public function sitemap(){
+        return response()
+                    ->view('sitemap', [
+                        'galleries' => Gallery::all(), 
+                    ])
+                    ->header('Content-Type', 'text/xml');
+    }
+    
+    public function manifest(){
+        return response()
+                    ->view('manifest', [
+                        'icons' => [
+                            16,
+                            32,
+                            57,
+                            60,
+                            72,
+                            76,
+                            96,
+                            114,
+                            120,
+                            160,
+                            196
+                        ], 
+                    ])
+                    ->header('Content-Type', 'application/json');
     }
 }

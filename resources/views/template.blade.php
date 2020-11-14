@@ -5,20 +5,94 @@
         <meta name="resource-type" content="document">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
         <link rel="stylesheet" type="text/css" href="{{ getExtStatic('statics.frameworks.bootswatch', "css") }}" integrity="{{ getExtStaticIntegrity('statics.frameworks.bootswatch', "css") }}" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{{ getExtStatic('statics.frameworks.iconic', "css") }}" integrity="{{ getExtStaticIntegrity('statics.frameworks.iconic', "css") }}" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/main.css">
         @yield('css')
+        
+        <link rel="manifest" href="{{ url('/') }}/manifest">
+    @if(isset($meta))
+        @if($meta->getRobots())
+        <meta name="robots" content="index, follow, noarchive">
+        @else
+        <meta name="robots" content="noindex, nofollow, noarchive">
+        @endif  
+        <meta name="description" content="{!! html_entity_decode($meta->getDescription()) !!}"/>
+        <meta name="keywords" content="maquette, architecture, creation, realisation, modelisme, immobilier, epinal, lorraine, grand est, @foreach($meta->getTags() as $tag){{ (!$loop->first && $tag != '') ? ', '.$tag : $tag }}@endforeach"/>
+        <meta name="subject" content="Réalisation de maquettes d'architecture">
+       
+        <meta name="copyright"content="{{ $meta->getAppName() }}">
+        <meta name="reply-to" content="{{ $meta->getEmail() }}">
+        <meta name="owner" content="{{ $meta->getAppName() }}">
+        <meta name="url" content="{{ $meta->getUrl() }}">
+        <title>{{$meta->getAppName() }} | {!! $meta->getTitle() !!}</title>
+
+        <link rel="author" href="{{ $meta->getAppName() }}, {{ $meta->getEmail() }}" />
+        <link rel="contact" href="{{ $meta->getEmail() }}" />
+      
+        <link rel="shortcut icon" href="{{ url('/') }}/img/icons/favicon.ico">
+        <link rel="apple-touch-icon" type="image/png" sizes="57x57" href="{{ url('/') }}/img/icons/icon-57.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="{{ url('/') }}/img/icons/icon-114.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="72x72" href="{{ url('/') }}/img/icons/icon-72.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="144x144" href="{{ url('/') }}/img/icons/icon-144.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="{{ url('/') }}/img/icons/icon-60.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="{{ url('/') }}/img/icons/icon-120.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="{{ url('/') }}/img/icons/icon-76.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="152x152" href="{{ url('/') }}/img/icons/icon-152.png">
+        <link rel="icon" type="image/png" sizes="196x196" href="{{ url('/') }}/img/icons/icon-196.png">
+        <link rel="icon" type="image/png" sizes="160x160" href="{{ url('/') }}/img/icons/icon-160.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ url('/') }}/img/icons/icon-96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url('/') }}/img/icons/icon-16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url('/') }}/img/icons/icon-32.png">
+        
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="msapplication-navbutton-color" content="#ffffff">
+        <meta name="msapplication-starturl" content="/">
+        <meta name="msapplication-titlecolor" content="#ffffff">
+        <meta name="msapplication-titleimage" content="{{ url('/') }}/img/icons/icon-144.png">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="{{ $meta->getAppName() }}">
+        <meta name="application-name" content="{{ $meta->getAppName() }}"/>
+
+        <meta property="twitter:card" content="{{ $meta->getTwitter()['card'] }}">
+        <meta property="twitter:title" content="{!! $meta->getTitle() !!}">
+        <meta property="twitter:description" content="{!! html_entity_decode($meta->getDescription()) !!}">
+        <meta property="twitter:image" content="{{ $meta->getTwitter()['image'] }}"> 
+        <meta property="twitter:image:alt" content="{!! $meta->getTitle() !!}"> 
+
+        <meta property="og:title" content="{!! $meta->getTitle() !!}" />
+        <meta property="og:type" content="{{ $meta->getOg()['type'] }}" />
+        <meta property="og:url" content="{{ $meta->getUrl() }}" />
+        <meta property="og:description" content="{!! html_entity_decode($meta->getDescription()) !!}" />
+        <meta property="og:site_name" content="{{ $meta->getAppName() }}" />
+        <meta property="og:locale" content="fr_FR">
+        @foreach($meta->getOg()['images'] as $image)
+        <meta property="og:image" content="{{ $image['url'] }}" />
+        <meta property="og:image:type" content="{{ $image['type'] }}" />
+        <meta property="og:image:alt" content="{{ $image['title'] }}"> 
+        @endforeach
+        <meta name="og:email" content="{{ $meta->getEmail() }}"/>
+        <meta name="og:phone_number" content="+33329347280"/>
+        <meta name="og:locality" content="Epinal"/>
+        <meta name="og:region" content="Grand Est"/>
+        <meta name="og:country-name" content="France"/>
+
+        <meta property="fb:admins" content="1484217841873182" /> 
+        <meta property="fb:pages" content="1484217841873182" />
+
+        <link rel="canonical" href="{{ $meta->getUrl() }}">    
+    @else
+        <title>MAC Onsay</title>
+    @endif   
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light pb-1 mb-3">
             <div class="container">
                 <div class="d-flex flex-column w-100">
                     <a class="navbar-brand text-center mx-0 mb-2" href="{{ url('/') }}">
-                        <h1>
-                            <img class="img-fluid" src="{{ url('/') }}/img/logo.png" alt="MAC (Maquette d'Architecture Créations)"/>
-                            <span></span>
-                        </h1>
+                        <img class="img-fluid" src="{{ url('/') }}/img/logo.png" alt="MAC (Maquette d'Architecture Créations)"/>
+                        <span></span>
                     </a>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar">
                         <span class="navbar-toggler-icon"></span>
@@ -65,6 +139,9 @@
     @else
         <main class="container mb-3 pb-5">
     @endif
+        @if(isset($title) && $title)
+            <h1 class="text-center">{{ $title }}</h1>
+        @endif
             @yield('content')
         </main>
         <footer class="w-100 position-absolute text-center pt-4 pb-2">
@@ -73,9 +150,8 @@
                     <div class="col-12 col-sm-6">
                         <img class="footer-logo mb-1" src="{{ url('/') }}/img/logo-simple.png" alt="MAC (Maquette d'Architecture Créations)">
                         <p>MAC (Maquette d'Architecture Créations), entreprise spécialisée dans la réalisation de maquette d'architecture et urbanisme.</p>   
-                        <small><a href="{{ url('/') }}/politique-de-confidentialite" target="_blank">Politique de confidentialité</a></small>
                     </div>
-                    <div class="col-12 col-sm-6 mt-1">
+                    <div class="col-12 col-sm-6">
                         <p class="m-1 font-weight-bold"></p>
                         <address class="m-1">
                             <span>MAC - Gunduz Onsay</span>
@@ -90,26 +166,52 @@
                         <address class="m-1" id="footer-mail">
                             <a href="" class="mail">maconsay@gmail.com</a>
                         </address>
-                        <div class="social my-3"> 
-                            <a href="https://www.facebook.com/mac.onsay" class="m-1" target="_blank"> 
-                                <img src="{{ url('/') }}/img/icons/facebook.svg" class="footer-social" alt="Facebook"> 
-                            </a> 
-                            <a href="https://www.linkedin.com/in/gunduzonsay/" class="m-1" target="_blank"> 
-                                <img src="{{ url('/') }}/img/icons/linkedin.svg" class="footer-social" alt="LinkedIn"> 
-                            </a> 
-                        </div>
                     </div>
                 </div>
-            <p>
-                <small>Copyright © <?php echo date("Y") ?> MAC (Maquette d'Architecture Créations) - Tous droits réservés</small>
-            </p>
+                <div class="row">
+                    <div class="social col-12 my-2">
+                        <a href="https://www.facebook.com/mac.onsay" class="m-1" target="_blank"> 
+                                <img src="{{ url('/') }}/img/icons/facebook.svg" class="footer-social" alt="Facebook"> 
+                        </a> 
+                        <a href="https://www.linkedin.com/in/gunduzonsay" class="m-1" target="_blank"> 
+                            <img src="{{ url('/') }}/img/icons/linkedin.svg" class="footer-social" alt="LinkedIn"> 
+                        </a> 
+                    </div>
+                </div>
+                <div>
+                    <small>Copyright © <?php echo date("Y") ?> MAC (Maquette d'Architecture Créations) - Tous droits réservés</small>
+                </div>
             </div>
         </footer>  
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key="></script>
+        <script src="{{ getExtStatic('statics.frameworks.jquery', "js") }}" integrity="{{ getExtStaticIntegrity('statics.frameworks.jquery', "js") }}" crossorigin="anonymous"></script>
+        <script src="{{ getExtStatic('statics.frameworks.bootstrap', "js") }}" integrity="{{ getExtStaticIntegrity('statics.frameworks.bootstrap', "js") }}" crossorigin="anonymous"></script>
         <script src="{{ url('/') }}/js/main.js"></script>
         @yield('script')
+        @if(isset($meta))
+        <script type="application/ld+json">
+            [
+                {
+                    "@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "{{ $meta->getAppName() }}",
+                    "description": "MAC (Maquette d'Architecture Créations), entreprise spécialisée dans la réalisation de maquette d'architecture et urbanisme.",
+                    "url" : "{{ $meta->getUrl() }}",
+                    "logo": "{{ url('/img/logo-simple.png') }}",
+                    "sameAs" : [
+                        "https://www.facebook.com/mac.onsay",
+                        "https://www.linkedin.com/in/gunduzonsay"
+                    ],
+                    "email": "{{ $meta->getEmail() }}",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Golbey",
+                        "postalCode": "88190",
+                        "streetAddress": "60 rue d'Epinal"
+                    }
+                }
+                @yield('schemaorg')
+            ]
+        </script>
+        @endif
     </body>
 </html>

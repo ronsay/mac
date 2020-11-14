@@ -25,10 +25,10 @@ return [
         ],
         "jquery" => [
             "name" => "jquery",
-            "version" => "3.3.1",
+            "version" => "3.5.1",
             "js" => [
                 "url" => "jquery.min.js",
-                "sha" => "sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+                "sha" => "sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
             ]
         ],
         "iconic" => [
@@ -42,14 +42,6 @@ return [
         
         // Front
         
-        "jscookie" => [
-            "name" => "js-cookie",
-            "version" => "2.2.0",
-            "js" => [
-                "url" => "js.cookie.min.js",
-                "sha" => "sha384-ujpAYcyxFaJsZN5668lLgOpEH8vtWrbOq8fvj+WZ2kD71LJwGa/9QP/suPPF1hTI"
-            ]
-        ],
         "slick" => [
             "name" => "slick-carousel",
             "version" => "1.9.0",
@@ -70,34 +62,6 @@ return [
                 "sha" => "sha384-p8hrLdCuwU96YzWVlo0bxczkuDGwoLDfVDXgvu7uhCZMsWz4kvW6YHPMcdCKT8Ng"
             ]
         ],
-        "elevatezoom" => [
-            "name" => "elevatezoom",
-            "version" => "3.0.8",
-            "js" => [
-                "url" => "jquery.elevatezoom.min.js",
-                "sha" => "sha384-/hkHElFyT0Jcxlb21PQbn188IqK2OeJn2W23QYjyBIUd6IQmPqNcSuvmpJn5QjzZ"
-            ]
-        ],
-        "slider" => [
-            "name" => "bootstrap-slider",
-            "version" => "10.2.3",
-            "css" => [
-                "url" => "css/bootstrap-slider.min.css",
-                "sha" => "sha384-jruzlp+vkkhh4ud+FjQxxN13/XRblqJzNYtZx8x1DZaGTt7xn+HpSTBFINDsSRSF"
-            ],
-            "js" => [
-                "url" => "bootstrap-slider.min.js",
-                "sha" => "sha384-o7zdCLFZ5TcYPRXoyF4WHfs/raOxXci3vVNASM4GtZ0AY2UXj2aWW3yS1Z+0Sr0H"
-            ]
-        ],
-        "bootpag" => [
-            "name" => "bootpag",
-            "version" => "1.0.7",
-            "js" => [
-                "url" => "jquery.bootpag.min.js",
-                "sha" => "sha384-5/fPY012js08n3gyHvDfr8sVEOSCosC/brY5qN3Og77rtZ0/yL8HSTAHpEXgKcbx"
-            ]
-        ],
         
         // Back
         
@@ -109,62 +73,14 @@ return [
                 "sha" => "sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
             ]
         ],
-        "datetimepicker" => [
-            "name" => "bootstrap-datetimepicker",
-            "version" => "4.17.47",
-            "css" => [
-                "url" => "css/bootstrap-datetimepicker.min.css",
-                "sha" => "sha384-O1hPCzrpXngZMErIjr+H0eOvTf1GKeN4n8CAAgeGgNT8SmQot8u0Zf7V9ipByhSi"
-            ],
+        "dropzone" => [
+            "name" => "dropzone",
+            "version" => "5.7.2",
             "js" => [
-                "url" => "js/bootstrap-datetimepicker.min.js",
-                "sha" => "sha384-eRwUWQDbnWMRrNpCKFsqmkfL7PMM8a4uUw5AvjTuLRoYFfozRz7g9BS696LvdNrE"
+                "url" => "min/dropzone.min.js",
+                "sha" => "sha512-9WciDs0XP20sojTJ9E7mChDXy6pcO0qHpwbEJID1YVavz2H6QBz5eLoDD8lseZOb2yGT8xDNIV7HIe1ZbuiDWg=="
             ]
         ],
-        "fileinput" => [
-            "name" => "bootstrap-fileinput",
-            "version" => "4.5.1",
-            "css" => [
-                "url" => "css/fileinput.min.css",
-                "sha" => "sha384-f/KBwuT/604LUyHpwIt54ikMfx9MLt7hDP98uMomzYvgXNCwwdoEehMGpJuj6jqu"
-            ],
-            "js" => [
-                "url" => "js/fileinput.min.js",
-                "sha" => "sha384-7INrOkqYbJyr6fwVSobXK1c8IfwPuSuSD6dPXNCL7jKtabja8tBR63C31GuqBOin"
-            ]
-        ],
-        "momentjs" => [
-            "name" => "moment.js",
-            "version" => "2.22.2",
-            "js" => [
-                "url" => "moment.min.js",
-                "sha" => "sha384-sIzeKWIAHvT0Vm8QbfLCqZwBG0WMCkWVAOYd/330YSNeeQ1Y57N3T9lQz5Ry/EHH"
-            ],
-            "locale" => [
-                "url" => "locale/".env('APP_LANG', 'en').".js",
-                "sha" => "sha384-3FwcuGMawv/mFO8kXToMwqRL3Zo2DEwdA2OFneqE7qQgBH+aAlacqr/XVZnSKhdB" // Attention !!! hash valide pour FR uniquement
-            ]
-        ],
-        "tinymce" => [
-            "name" => "tinymce",
-            "version" => "4.8.5",
-            "js" => [
-                "url" => "tinymce.min.js",
-                "sha" => "sha384-boRt5Y4CDaLhWgUKNIVNuanoSimYGySzGC/rAm9JQZfTmbuDy/fWFbZkJa1RYuxo"
-            ]
-        ],
-        "select" => [
-            "name" => "bootstrap-select",
-            "version" => "1.13.3",
-            "css" => [
-                "url" => "css/bootstrap-select.min.css",
-                "sha" => "sha384-VIL6DOi0abWGW+PZ1rFVoA2WatU240bS9tuKRrp9b7P4b2WXk6dGH6cv7ke0u1C3"
-            ],
-            "js" => [
-                "url" => "js/bootstrap-select.min.js",
-                "sha" => "sha384-ygT2mviw2yCDz5zAzQ0pDthjJ+31/ixm6bFYumXyWXOrkH05DlpYy5FOJfUg0Z87"
-            ]
-        ]
     ]
 ];
 

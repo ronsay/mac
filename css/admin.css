@@ -1,0 +1,38 @@
+.menu{
+    margin-top: 1px;
+    font-size: 1.25rem;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.nav-item{
+    font-size: 1rem;
+}
+
+.nav-item p{
+    padding-top: 0.9rem;
+}
+
+.list-group-item:hover{
+    cursor: pointer; 
+}
+
+#loader, #saved{
+    position: fixed;
+    top : 0px;
+    left : 0px;
+    height : 100%;
+    width : 100%;
+    z-index: 9999;
+    display: none;
+}
+
+#loader{
+    background: rgba(255,255,255,0.8) url("../img/admin/loader.gif") 50% 50% no-repeat;
+}
+
+#saved{
+    background: rgba(255,255,255,0.8) url("../img/admin/saved.gif") 50% 50% no-repeat;
+}
