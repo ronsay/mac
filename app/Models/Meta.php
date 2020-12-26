@@ -45,7 +45,11 @@ class Meta {
                 }
             }
         }else{
-            $arrayImages = self::fillArrayImages($arrayImages, self::DEFAULTIMG, $defTitle);
+            $image = array(
+                'image' => self::DEFAULTIMG,
+                'title' => $defTitle
+            );
+            $arrayImages = self::fillArrayImages($arrayImages, $image);
         }
         
         return array(

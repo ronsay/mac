@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/projects/mac/config/statics.php</file>
-            <file>file:/C:/xampp/htdocs/projects/mac/resources/views/gallery.blade.php</file>
-            <file>file:/C:/xampp/htdocs/projects/mac/app/Http/Controllers/AdminController.php</file>
-            <file>file:/C:/xampp/htdocs/projects/mac/resources/views/admin/template.blade.php</file>
-            <file>file:/C:/xampp/htdocs/projects/mac/resources/views/admin/gallery.blade.php</file>
-            <file>file:/C:/xampp/htdocs/projects/mac/app/Http/Controllers/GalleryController.php</file>
-            <file>file:/C:/xampp/htdocs/projects/mac/app/Http/Controllers/RealisationController.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
