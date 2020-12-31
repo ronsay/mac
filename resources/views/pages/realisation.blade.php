@@ -3,12 +3,12 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ getExtStatic('statics.frameworks.slick', "css") }}" integrity="{{ getExtStaticIntegrity('statics.frameworks.slick', "css") }}" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ getExtStatic('statics.frameworks.slick-theme', "css") }}" integrity="{{ getExtStaticIntegrity('statics.frameworks.slick-theme', "css") }}" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/gallery.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/gallery{{ $staticType }}.css">
 @stop
 
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
-    <script src="{{ url('/') }}/js/gallery.js"></script>
+    <script src="{{ url('/') }}/js/gallery{{ $staticType }}.js"></script>
 @stop
 
 @section('content')

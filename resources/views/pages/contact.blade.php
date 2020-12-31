@@ -1,12 +1,12 @@
 @extends('template')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/contact.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/contact{{ $staticType }}.css">
 @stop
 
 @section('script')
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key="></script>
-    <script src="{{ url('/') }}/js/contact.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key={{Config::get('app.mapkey')}}"></script>
+    <script src="{{ url('/') }}/js/contact{{ $staticType }}.js"></script>
 @stop
 
 @section('content')

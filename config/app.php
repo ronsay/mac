@@ -120,6 +120,8 @@ return [
     */
 
     'key' => env('APP_KEY'),
+    
+    'mapkey' => env('APP_MAP_KEY'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -176,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        App\Providers\ViewComposerServiceProvider::class,
 
     ],
 

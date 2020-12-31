@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/apropos.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/apropos{{ $staticType }}.css">
 @stop
 
 @section('script')

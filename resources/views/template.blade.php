@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
         <link rel="stylesheet" type="text/css" href="{{ getExtStatic('statics.frameworks.bootswatch', "css") }}" integrity="{{ getExtStaticIntegrity('statics.frameworks.bootswatch', "css") }}" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/main.css">
+        <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/main{{ $staticType }}.css">
         @yield('css')
         
         <link rel="manifest" href="{{ url('/') }}/manifest">
@@ -185,7 +185,7 @@
         </footer>  
         <script src="{{ getExtStatic('statics.frameworks.jquery', "js") }}" integrity="{{ getExtStaticIntegrity('statics.frameworks.jquery', "js") }}" crossorigin="anonymous"></script>
         <script src="{{ getExtStatic('statics.frameworks.bootstrap', "js") }}" integrity="{{ getExtStaticIntegrity('statics.frameworks.bootstrap', "js") }}" crossorigin="anonymous"></script>
-        <script src="{{ url('/') }}/js/main.js"></script>
+        <script src="{{ url('/') }}/js/main{{ $staticType }}.js"></script>
         @yield('script')
         @if(isset($meta))
         <script type="application/ld+json">
