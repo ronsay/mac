@@ -5,7 +5,7 @@
 @stop
 
 @section('script')
-    <script src="{{ url('/') }}/js/index.js"></script>
+    <script src="{{ url('/') }}/js/index{{ $staticType }}.js"></script>
 @stop
 
 @section('content')
