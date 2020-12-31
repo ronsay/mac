@@ -127,6 +127,6 @@ class GalleryController extends Controller{
         }
         if($str != '') $str .= '-';
         $str .= $galleryPhoto->orderimg;
-        return $str.'.'.(pathinfo($galleryPhoto->image)['extension']);
+        return makeURL($str).'.'.(pathinfo($galleryPhoto->image)['extension']);
     }
 }

@@ -10,20 +10,20 @@ class PageController extends Controller{
     public function getIndex(){
         $carousel = array(
             array(
-                'image' => 'img/index/1.jpg',
+                'image' => 'img/accueil1.jpg',
                 'title' => 'Bienvenue sur notre site'
             ),
             array(
-                'image' => 'img/index/2.jpg',
+                'image' => 'img/accueil2.jpg',
                 'title' => 'Maquettiste à épinal dans le Grand Est'
             ),
             array(
-                'image' => 'img/index/3.jpg',
+                'image' => 'img/accueil3.jpg',
                 'title' => 'En savoir plus',
                 'page' => 'a-propos'
             ),
             array(
-                'image' => 'img/index/4.jpg',
+                'image' => 'img/accueil4.jpg',
                 'title' => 'Nous contacter',
                 'page' => 'contact'
             )

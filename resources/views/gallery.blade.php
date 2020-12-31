@@ -7,7 +7,7 @@
                     <div class="carousel-inner">
                         @foreach($gallery['list'] as $ind => $item)
                         <div class="carousel-item @if($ind == 0) active @endif">
-                            <img class="d-block w-100" @if($ind == 0) src= @else src="" data-src= @endif"{{ url('/img/gallery/'.$gallery['url'].'/fit/'.$item['image']) }}" alt="{{ $item['title'] ?? $gallery['title'] }}" @if(isset($gallery['modal']) && $gallery['modal']) data-toggle="modal" data-target="#{{ $gallery['id'] ?? 'default' }}-modal-gallery" @endif>
+                            <img class="d-block w-100" @if($ind == 0) src= @else src="" data-src= @endif"{{ url('/img/gallery/'.$gallery['url'].'/fit/'.$item['image'].'?tmp='.time()) }}" alt="{{ $item['title'] ?? $gallery['title'] }}" @if(isset($gallery['modal']) && $gallery['modal']) data-toggle="modal" data-target="#{{ $gallery['id'] ?? 'default' }}-modal-gallery" @endif>
                             <div class="carousel-caption d-none d-md-block p-0">
                             @if(isset($item['title']))
                                 <h2>{{ $item['title'] }}</h2>
@@ -35,7 +35,7 @@
                 <div class="carousel-indicators position-relative slider @if(!isset($gallery['background']) || $gallery['background'] == 'light') bckg-light @endif">
                     @foreach($gallery['list'] as $ind => $item)
                     <div data-slide-to="{{ $ind }}" data-target="#{{ $gallery['id'] ?? 'default' }}-gallery-carousel" class="carousel-indicator-item @if($ind == 0) active @endif">
-                        <img @if(isset($gallery['nbthumb']) && $ind < $gallery['nbthumb']) src= @else src="" data-src= @endif"{{ url('/img/gallery/'.$gallery['url'].'/thumbnail/'.$item['image']) }}" alt="{{ $item['title'] ?? $gallery['title'] }}" class="w-100">
+                        <img @if(isset($gallery['nbthumb']) && $ind < $gallery['nbthumb']) src= @else src="" data-src= @endif"{{ url('/img/gallery/'.$gallery['url'].'/thumbnail/'.$item['image'].'?tmp='.time()) }}" alt="{{ $item['title'] ?? $gallery['title'] }}" class="w-100">
                     </div>
                     @endforeach
                 </div>
@@ -57,7 +57,7 @@
                                 <div class="carousel-inner">
                                 @foreach($gallery['list'] as $ind => $item)
                                   <div class="carousel-item @if($ind == 0) active @endif">
-                                    <img class="d-block w-100" src="" data-src="{{ url('/img/gallery/'.$gallery['url'].'/'.$item['image']) }}" alt="{{ $item['title'] ?? $gallery['title'] }}">
+                                    <img class="d-block w-100" src="" data-src="{{ url('/img/gallery/'.$gallery['url'].'/'.$item['image'].'?tmp='.time()) }}" alt="{{ $item['title'] ?? $gallery['title'] }}">
                                     <div class="carousel-caption d-none d-md-block p-0">
                                     @if(isset($item['title']))
                                         <h3>{{ $item['title'] }}</h3>
@@ -85,7 +85,7 @@
                             <div class="carousel-indicators slider">
                                 @foreach($gallery['list'] as $ind => $item)
                                 <div data-slide-to="{{ $ind }}" data-target="#{{ $gallery['id'] ?? 'default' }}-modal-gallery-carousel" class="carousel-indicator-item @if($ind == 0) active @endif">
-                                  <img src="" data-src="{{ url('/img/gallery/'.$gallery['url'].'/thumbnail/'.$item['image']) }}" alt="{{ $item['title'] ?? $gallery['title'] }}" class="w-100">
+                                  <img src="" data-src="{{ url('/img/gallery/'.$gallery['url'].'/thumbnail/'.$item['image'].'?tmp='.time()) }}" alt="{{ $item['title'] ?? $gallery['title'] }}" class="w-100">
                                 </div>
                                 @endforeach
                             </div>

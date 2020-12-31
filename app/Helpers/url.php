@@ -1,6 +1,6 @@
 <?php
 
-    function makeURL($str){
+    function makeURL($str, $delimiter = '-'){
         setlocale(LC_ALL, 'en_US.UTF8');
         $clean = str_replace("'", ' ', $str);
         $clean = iconv('UTF-8', 'ASCII//TRANSLIT', $clean);
