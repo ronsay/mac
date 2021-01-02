@@ -9,8 +9,8 @@
         <title>MAC Onsay | Administration</title>
         <link rel="stylesheet" type="text/css" href="{{ getExtStatic('statics.frameworks.bootswatch', "css") }}" integrity="{{ getExtStaticIntegrity('statics.frameworks.bootswatch', "css") }}" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{{ getExtStatic('statics.frameworks.iconic', "css") }}" integrity="{{ getExtStaticIntegrity('statics.frameworks.iconic', "css") }}" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/admin.css">
-        <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/dropzone.css">
+        <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/admin{{ $staticType }}.css">
+        <link rel="stylesheet" type="text/css" href="{{ url('/') }}/css/dropzone{{ $staticType }}.css">
     </head>
     <body>
         <header>
@@ -79,7 +79,7 @@
             var urlPath = '{{ url('/') }}';
             var token = '{{ csrf_token() }}';
         </script>    
-        <script src="{{ url('/') }}/js/admin.js"></script>
-        <script src="{{ url('/') }}/js/dropzone.js"></script>
+        <script src="{{ url('/') }}/js/admin{{ $staticType }}.js"></script>
+        <script src="{{ url('/') }}/js/dropzone{{ $staticType }}.js"></script>
     </body>
 </html>
